@@ -11,6 +11,7 @@ import Category from "./pages/Category";
 import CreateCategory from "./pages/CreateCategory";
 import PublicRoute from "./components/PublicRoute";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Navbar from "./components/Navbar";
 function App() {
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -38,6 +39,7 @@ function App() {
 
   return (
     <>
+      <Navbar></Navbar>
       <CategoriProvider>
         <Routes>
           <Route
