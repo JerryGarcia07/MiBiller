@@ -5,26 +5,16 @@ import CategoriForm from "../components/CategoriForm";
 import CategoriList from "../components/CategoriList";
 
 const Home = () => {
-    const navagation = useNavigate();
-
-    useEffect(()=>{
-        const checksession=async()=>{
-            const {data:{user}}=await supabase.auth.getUser();
-            if(!user){
-                navagation('/login');
-            }
-        }
-        checksession();
-    },[navagation])
-    return (
-        <div>
-            <h1>Home</h1>
-            <button onClick={()=>supabase.auth.signOut()}>Logout</button>
-            <CategoriForm/>
-            <CategoriList/>
-        </div>
-    );
+  return (
+    <div>
+      <h1>¡Bienvenido a tu gestor de gastos!</h1>
+      <p>
+        Empieza a organizar tus finanzas de forma sencilla y mantén tus gastos
+        bajo control.
+      </p>
+      <button>Agregar</button>
+    </div>
+  );
 };
-
 
 export default Home;
