@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "../supabase/client";
 
 export const CategoriContext = createContext();
@@ -14,6 +14,25 @@ export const CategoriProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
   const [Adding, setAdding] = useState(false);
+
+  const [user, setUser] = useState(null);
+  const [loadingUser, setLoadingUser] = useState(true);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => {
+      setUser(data.session?.user ?? null);
+      setLoadingUser(false);
+    });
+
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setUser(session?.user ?? null);
+        setLoadingUser(false);
+      },
+    );
+
+    return () => listener.subscription.unsubscribe();
+  }, []);
 
   const getCategories = async () => {
     setLoading(true);
@@ -90,6 +109,8 @@ export const CategoriProvider = ({ children }) => {
         updateCategoria,
         loading,
         Adding,
+        user,
+        loadingUser,
       }}
     >
       {children}
