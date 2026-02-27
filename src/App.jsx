@@ -18,26 +18,6 @@ function App() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   supabase.auth.onAuthStateChange((event, session) => {
-  //     setSession(session);
-  //     setLoading(false);
-  //   });
-
-  //   const {
-  //     data: { subscription },
-  //   } = supabase.auth.onAuthStateChange((_event, session) => {
-  //     setSession(session);
-  //     setLoading(false);
-  //   });
-
-  //   return () => subscription.unsubscribe();
-  // }, []);
-
-  // if (loading) {
-  //   return <div>Cargando apliacacion </div>;
-  // }
-
   return (
     <>
       <CategoriProvider>

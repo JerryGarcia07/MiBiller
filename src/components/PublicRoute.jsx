@@ -5,7 +5,7 @@ const PublicRoute = ({ children }) => {
   const { user, loadingUser } = useCategoria();
 
   if (loadingUser) return <p>Cargando</p>;
-  if (user) return <Navigate to={"/"} replace></Navigate>; //eliminar el !
+  if (user) return <Navigate to={"/"} replace></Navigate>;
 
   return children;
 };
