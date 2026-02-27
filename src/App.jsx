@@ -12,6 +12,7 @@ import CreateCategory from "./pages/CreateCategory";
 import PublicRoute from "./components/PublicRoute";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Navbar from "./components/Navbar";
+import { MainLayout } from "./layouts/MainLayout";
 function App() {
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -39,7 +40,6 @@ function App() {
 
   return (
     <>
-      <Navbar></Navbar>
       <CategoriProvider>
         <Routes>
           <Route
@@ -51,29 +51,37 @@ function App() {
             }
           ></Route>
           <Route
-            path="/"
             element={
               <ProtectedRoute>
-                <Home />
+                <MainLayout />
               </ProtectedRoute>
             }
-          ></Route>
-          <Route
-            path="/Categoria"
-            element={
-              <ProtectedRoute>
-                <Category />
-              </ProtectedRoute>
-            }
-          ></Route>
-          <Route
-            path="/CrearCategoria"
-            element={
-              <ProtectedRoute>
-                <CreateCategory />
-              </ProtectedRoute>
-            }
-          ></Route>
+          >
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <Home />
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="/Categoria"
+              element={
+                <ProtectedRoute>
+                  <Category />
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="/CrearCategoria"
+              element={
+                <ProtectedRoute>
+                  <CreateCategory />
+                </ProtectedRoute>
+              }
+            ></Route>
+          </Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </CategoriProvider>
