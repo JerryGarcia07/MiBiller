@@ -10,6 +10,7 @@ function Navbar() {
         <NavLink to={"/Estadistica"}>Estadistica</NavLink>
         <NavLink to={"/Perfil"}>Perfil</NavLink>
       </li>
+      <button onClick={() => supabase.auth.signOut()}>Logout</button>
     </div>
   );
 }
