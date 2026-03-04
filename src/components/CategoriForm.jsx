@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useCategoria } from "../contexts/CategoriContext";
 
-const CategoriForm = () => {
+const CategoriForm = (nameIcon) => {
   const [cateName, setCateName] = useState("");
   const [cateIcon, setCateIcon] = useState("");
   const { addCategoria, loading } = useCategoria();

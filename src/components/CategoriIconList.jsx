@@ -1,14 +1,8 @@
 import { useEffect, useState } from "react";
 import * as FaIcons from "react-icons/fa";
 
-const CategoriIconList = () => {
-  const [nameIcon, setNameIcon] = useState(null);
-
+const CategoriIconList = ({ ResivirIconName }) => {
   const iconNames = Object.keys(FaIcons);
-
-  useEffect(() => {
-    console.log(nameIcon);
-  }, [nameIcon]);
 
   return (
     <div>
@@ -16,7 +10,7 @@ const CategoriIconList = () => {
         const IconCompoent = FaIcons[iconName];
 
         return (
-          <button key={iconName} onClick={() => setNameIcon(iconName)}>
+          <button key={iconName} onClick={() => ResivirIconName(iconName)}>
             <IconCompoent size={32}></IconCompoent>
           </button>
         );
