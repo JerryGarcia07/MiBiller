@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useCategoria } from "../contexts/CategoriContext";
+import * as FaIcons from "react-icons/fa";
 
 const CategoriForm = (nameIcon) => {
   const [cateName, setCateName] = useState("");
@@ -9,6 +10,11 @@ const CategoriForm = (nameIcon) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     addCategoria(cateName, cateIcon);
+  };
+
+  const Icon = ({ name, ...props }) => {
+    const DynamicIcon = FaIcons[name];
+    return DynamicIcon ? <DynamicIcon {...props} /> : null;
   };
   return (
     <div>
@@ -32,6 +38,8 @@ const CategoriForm = (nameIcon) => {
           {loading ? "Adding..." : "Add"}
         </button>
       </form>
+      <Icon name={nameIcon} size={24} color="red" />
+      <h4>este el icono</h4>
     </div>
   );
 };
