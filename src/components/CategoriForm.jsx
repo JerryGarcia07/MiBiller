@@ -19,7 +19,6 @@ const CategoriForm = (nameIcon) => {
 
   useEffect(() => {
     setCateIcon(nameIcon.nameIcon);
-    console.log(nameIcon.nameIcon);
   }, [nameIcon]);
 
   return (
