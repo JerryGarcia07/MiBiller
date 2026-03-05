@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCategoria } from "../contexts/CategoriContext";
 import * as FaIcons from "react-icons/fa";
 
@@ -16,9 +16,16 @@ const CategoriForm = (nameIcon) => {
     const DynamicIcon = FaIcons[name];
     return DynamicIcon ? <DynamicIcon {...props} /> : null;
   };
+
+  useEffect(() => {
+    setCateIcon(nameIcon.nameIcon);
+    console.log(nameIcon.nameIcon);
+  }, [nameIcon]);
+
   return (
     <div>
       <h1>CategoriForm</h1>
+      <Icon name={nameIcon.nameIcon} size={24} />
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -27,19 +34,11 @@ const CategoriForm = (nameIcon) => {
           value={cateName}
           onChange={(e) => setCateName(e.target.value)}
         />
-        <input
-          type="text"
-          placeholder="Icono"
-          name="cateIcon"
-          value={cateIcon}
-          onChange={(e) => setCateIcon(e.target.value)}
-        />
+
         <button type="submit" disabled={loading}>
           {loading ? "Adding..." : "Add"}
         </button>
       </form>
-      <Icon name={nameIcon} size={24} color="red" />
-      <h4>este el icono</h4>
     </div>
   );
 };

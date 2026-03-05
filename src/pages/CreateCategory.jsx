@@ -24,10 +24,6 @@ const CreateCategory = () => {
     setNameIcon(nameIcon);
   };
 
-  useEffect(() => {
-    console.log(nameIcon);
-  }, [nameIcon]);
-
   return (
     <div>
       <h1>CreateCategory</h1>
