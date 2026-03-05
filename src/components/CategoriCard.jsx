@@ -1,18 +1,12 @@
 import { useCategoria } from "../contexts/CategoriContext";
-import * as FaIcons from "react-icons/fa";
 
 const CategoriCard = ({ cardCate }) => {
-  const { deleteCategoria } = useCategoria();
+  const { deleteCategoria, Icon } = useCategoria();
   const handleDelete = () => {
     deleteCategoria(cardCate.id);
   };
   const handleUpdate = () => {
     alert(cardCate.id, {});
-  };
-
-  const Icon = ({ name, ...props }) => {
-    const DynamicIcon = FaIcons[name];
-    return DynamicIcon ? <DynamicIcon {...props} /> : null;
   };
 
   const date = new Date(cardCate.date);

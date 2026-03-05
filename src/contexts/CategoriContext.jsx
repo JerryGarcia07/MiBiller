@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "../supabase/client";
+import * as FaIcons from "react-icons/fa";
 
 export const CategoriContext = createContext();
 
@@ -99,6 +100,11 @@ export const CategoriProvider = ({ children }) => {
     getCategories();
   };
 
+  const Icon = ({ name, ...props }) => {
+    const DynamicIcon = FaIcons[name];
+    return DynamicIcon ? <DynamicIcon {...props} /> : null;
+  };
+
   return (
     <CategoriContext.Provider
       value={{
@@ -111,6 +117,7 @@ export const CategoriProvider = ({ children }) => {
         Adding,
         user,
         loadingUser,
+        Icon,
       }}
     >
       {children}

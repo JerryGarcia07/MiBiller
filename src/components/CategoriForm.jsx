@@ -1,20 +1,14 @@
 import { useEffect, useState } from "react";
 import { useCategoria } from "../contexts/CategoriContext";
-import * as FaIcons from "react-icons/fa";
 
 const CategoriForm = (nameIcon) => {
   const [cateName, setCateName] = useState("");
   const [cateIcon, setCateIcon] = useState("");
-  const { addCategoria, loading } = useCategoria();
+  const { addCategoria, loading, Icon } = useCategoria();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     addCategoria(cateName, cateIcon);
-  };
-
-  const Icon = ({ name, ...props }) => {
-    const DynamicIcon = FaIcons[name];
-    return DynamicIcon ? <DynamicIcon {...props} /> : null;
   };
 
   useEffect(() => {
