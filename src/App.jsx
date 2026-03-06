@@ -46,7 +46,15 @@ function App() {
               }
             ></Route>
             <Route
-              path="/CrearCategoria"
+              path="/Categoria/NuevaCategoria"
+              element={
+                <ProtectedRoute>
+                  <CreateCategory />
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="/Categoria/ActualizarCategoria/:id"
               element={
                 <ProtectedRoute>
                   <CreateCategory />

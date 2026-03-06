@@ -6,19 +6,6 @@ import { useEffect, useState } from "react";
 
 const CreateCategory = () => {
   const [nameIcon, setNameIcon] = useState(null);
-  const navagation = useNavigate();
-
-  // useEffect(() => {
-  //   const checksession = async () => {
-  //     const {
-  //       data: { user },
-  //     } = await supabase.auth.getUser();
-  //     // if (!user) {
-  //     //   navagation("/login");
-  //     // }
-  //   };
-  //   checksession();
-  // }, [navagation]);
 
   const ResivirIconName = (nameIcon) => {
     setNameIcon(nameIcon);
@@ -27,7 +14,6 @@ const CreateCategory = () => {
   return (
     <div>
       <h1>CreateCategory</h1>
-
       <CategoriForm nameIcon={nameIcon} />
       <CategoriIconList ResivirIconName={ResivirIconName} />
     </div>

@@ -6,7 +6,7 @@ function CategoriSearch() {
     <div>
       <form>
         <input type="text" placeholder="Buscar texto" />
-        <Link to="/CrearCategoria">Crear</Link>
+        <Link to="/Categoria/NuevaCategoria">Crear</Link>
       </form>
     </div>
   );

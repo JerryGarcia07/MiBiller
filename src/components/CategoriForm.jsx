@@ -9,6 +9,8 @@ const CategoriForm = (nameIcon) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     addCategoria(cateName, cateIcon);
+    setCateName("");
+    setCateIcon("");
   };
 
   useEffect(() => {
