@@ -1,12 +1,14 @@
+import { useNavigate } from "react-router";
 import { useCategoria } from "../contexts/CategoriContext";
 
 const CategoriCard = ({ cardCate }) => {
+  const navigate = useNavigate();
   const { deleteCategoria, Icon } = useCategoria();
   const handleDelete = () => {
     deleteCategoria(cardCate.id);
   };
   const handleUpdate = () => {
-    alert(cardCate.id, {});
+    navigate(`/Categoria/ActualizarCategoria/${cardCate.id}`);
   };
 
   const date = new Date(cardCate.date);

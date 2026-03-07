@@ -51,6 +51,23 @@ export const CategoriProvider = ({ children }) => {
     setLoading(false);
   };
 
+  const getCategorie = async (id) => {
+    setLoading(true);
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    const { error, data } = await supabase
+      .from("Categoria")
+      .select()
+      .eq("id", id)
+      .eq("user", user.id)
+      .order("date", { ascending: true });
+    if (error) throw error;
+    setCategories(data);
+    setLoading(false);
+  };
+
   const addCategoria = async (cateName, cateIcon) => {
     setAdding(true);
     try {

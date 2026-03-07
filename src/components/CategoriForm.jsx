@@ -1,17 +1,29 @@
 import { useEffect, useState } from "react";
 import { useCategoria } from "../contexts/CategoriContext";
+import { useParams } from "react-router";
 
 const CategoriForm = (nameIcon) => {
   const [cateName, setCateName] = useState("");
   const [cateIcon, setCateIcon] = useState("");
-  const { addCategoria, loading, Icon } = useCategoria();
+  const { addCategoria, loading, Icon, updateCategoria } = useCategoria();
+  const { id } = useParams();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    addCategoria(cateName, cateIcon);
+    if (id) {
+      updateCategoria();
+    } else {
+      addCategoria(cateName, cateIcon);
+    }
     setCateName("");
     setCateIcon("");
   };
+
+  useEffect(() => {
+    if (id) {
+    } else {
+    }
+  }, []);
 
   useEffect(() => {
     setCateIcon(nameIcon.nameIcon);
@@ -19,7 +31,6 @@ const CategoriForm = (nameIcon) => {
 
   return (
     <div>
-      <h1>CategoriForm</h1>
       <Icon name={nameIcon.nameIcon} size={24} />
       <form onSubmit={handleSubmit}>
         <input
