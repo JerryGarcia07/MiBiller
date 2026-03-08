@@ -14,7 +14,6 @@ const CategoriCard = ({ cardCate }) => {
   const date = new Date(cardCate.date);
   const fechaFormateada = date.toLocaleDateString("es-ES");
 
-  console.log(fechaFormateada);
   return (
     <div>
       <div>

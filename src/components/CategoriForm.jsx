@@ -5,7 +5,14 @@ import { useParams } from "react-router";
 const CategoriForm = (nameIcon) => {
   const [cateName, setCateName] = useState("");
   const [cateIcon, setCateIcon] = useState("");
-  const { addCategoria, loading, Icon, updateCategoria } = useCategoria();
+  const {
+    addCategoria,
+    loading,
+    Icon,
+    updateCategoria,
+    getCategorie,
+    categorie,
+  } = useCategoria();
   const { id } = useParams();
 
   const handleSubmit = async (e) => {
@@ -21,6 +28,7 @@ const CategoriForm = (nameIcon) => {
 
   useEffect(() => {
     if (id) {
+      getCategorie(id);
     } else {
     }
   }, []);
@@ -29,6 +37,7 @@ const CategoriForm = (nameIcon) => {
     setCateIcon(nameIcon.nameIcon);
   }, [nameIcon]);
 
+  console.log(categorie);
   return (
     <div>
       <Icon name={nameIcon.nameIcon} size={24} />
