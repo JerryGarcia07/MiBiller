@@ -13,7 +13,6 @@ export const useCategoria = () => {
 
 export const CategoriProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
-  const [categorie, setCategorie] = useState({});
   const [loading, setLoading] = useState(false);
   const [Adding, setAdding] = useState(false);
 
@@ -63,10 +62,11 @@ export const CategoriProvider = ({ children }) => {
       .select()
       .eq("id", id)
       .eq("user", user.id)
-      .order("date", { ascending: true });
+      .order("date", { ascending: true })
+      .single();
     if (error) throw error;
-    setCategorie(data);
     setLoading(false);
+    return data;
   };
 
   const addCategoria = async (cateName, cateIcon) => {
@@ -127,7 +127,6 @@ export const CategoriProvider = ({ children }) => {
     <CategoriContext.Provider
       value={{
         categories,
-        categorie,
         getCategories,
         getCategorie,
         addCategoria,
