@@ -13,6 +13,7 @@ export const useCategoria = () => {
 
 export const CategoriProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
+  const [movimiento, setMovimiento] = useState([]);
   const [loading, setLoading] = useState(false);
   const [Adding, setAdding] = useState(false);
 
@@ -90,6 +91,35 @@ export const CategoriProvider = ({ children }) => {
     }
   };
 
+  const addMovimiento = async (
+    moveName,
+    moveType,
+    moveRepet,
+    moveNota,
+    moveCategori,
+  ) => {
+    setLoading(true);
+    try {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      const { error, data } = await supabase.from("Movimiento").insert({
+        name: moveName,
+        type: moveType,
+        repeat: moveRepet,
+        note: moveNota,
+        user: user.id,
+        category_id: moveCategori,
+      });
+      if (error) throw error;
+      getMovimiento();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const deleteCategoria = async (id) => {
     const {
       data: { user },
@@ -121,6 +151,22 @@ export const CategoriProvider = ({ children }) => {
   const Icon = ({ name, ...props }) => {
     const DynamicIcon = FaIcons[name];
     return DynamicIcon ? <DynamicIcon {...props} /> : null;
+  };
+
+  const getMovimiento = async () => {
+    setLoading(true);
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    const { error, data } = await supabase
+      .from("Movimiento")
+      .select()
+      .eq("user", user.id)
+      .order("created_at", { ascending: true });
+    if (error) throw error;
+    setMovimiento(data);
+    setLoading(false);
   };
 
   return (
