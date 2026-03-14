@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { supabase } from "../supabase/client";
 import CategoriForm from "../components/CategoriForm";
 import CategoriList from "../components/CategoriList";
+import MoviList from "../components/MoviList";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
         bajo control.
       </p>
       <button>Agregar</button>
+      <MoviList />
     </div>
   );
 };

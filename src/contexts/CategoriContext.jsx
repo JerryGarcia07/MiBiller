@@ -173,11 +173,13 @@ export const CategoriProvider = ({ children }) => {
     <CategoriContext.Provider
       value={{
         categories,
+        movimiento,
         getCategories,
         getCategorie,
         addCategoria,
         deleteCategoria,
         updateCategoria,
+        getMovimiento,
         loading,
         Adding,
         user,
