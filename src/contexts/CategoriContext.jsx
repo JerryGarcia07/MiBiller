@@ -15,6 +15,7 @@ export const CategoriProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [movimiento, setMovimiento] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [loadingMovi, setLoadingMovi] = useState(false);
   const [Adding, setAdding] = useState(false);
 
   const [user, setUser] = useState(null);
@@ -154,7 +155,7 @@ export const CategoriProvider = ({ children }) => {
   };
 
   const getMovimiento = async () => {
-    setLoading(true);
+    setLoadingMovi(true);
     const {
       data: { user },
     } = await supabase.auth.getUser();
@@ -166,7 +167,7 @@ export const CategoriProvider = ({ children }) => {
       .order("created_at", { ascending: true });
     if (error) throw error;
     setMovimiento(data);
-    setLoading(false);
+    setLoadingMovi(false);
   };
 
   return (
@@ -181,6 +182,7 @@ export const CategoriProvider = ({ children }) => {
         updateCategoria,
         getMovimiento,
         loading,
+        loadingMovi,
         Adding,
         user,
         loadingUser,

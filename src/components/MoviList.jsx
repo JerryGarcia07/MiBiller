@@ -2,15 +2,14 @@ import React, { useEffect } from "react";
 import { useCategoria } from "../contexts/CategoriContext";
 
 const MoviList = () => {
-  const { getMovimiento, movimiento, loading } = useCategoria();
+  const { getMovimiento, movimiento, loadingMovi } = useCategoria();
 
   useEffect(() => {
     getMovimiento();
-    console.log(movimiento);
   }, []);
 
   const renderMoviList = () => {
-    if (loading) {
+    if (loadingMovi) {
       return (
         <div>
           <h2>Cargando.....</h2>
@@ -20,13 +19,19 @@ const MoviList = () => {
       return (
         <div>
           {movimiento.map((movi) => {
-            <h2></h2>;
+            <h2>{movi.name}</h2>;
+            <ul>
+              <li>{movi.monto}</li>
+              <li>{movi.created_at}</li>
+              <li>{movi.type}</li>
+              <li>{movi.category_id}</li>
+            </ul>;
           })}
         </div>
       );
     }
   };
-  return renderMoviList();
+  return <div>{renderMoviList()}</div>;
 };
 
 export default MoviList;
