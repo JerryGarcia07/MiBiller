@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useCategoria } from "../contexts/CategoriContext";
+import { MoviCard } from "./MoviCard";
 
 const MoviList = () => {
   const { getMovimiento, movimiento, loadingMovi } = useCategoria();
@@ -16,19 +17,9 @@ const MoviList = () => {
         </div>
       );
     } else {
-      return (
-        <div>
-          {movimiento.map((movi) => {
-            <h2>{movi.name}</h2>;
-            <ul>
-              <li>{movi.monto}</li>
-              <li>{movi.created_at}</li>
-              <li>{movi.type}</li>
-              <li>{movi.category_id}</li>
-            </ul>;
-          })}
-        </div>
-      );
+      return movimiento.map((movi) => {
+        <MoviCard key={movi.id} cardMovi={movi} />;
+      });
     }
   };
   return <div>{renderMoviList()}</div>;
