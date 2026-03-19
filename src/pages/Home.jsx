@@ -5,6 +5,7 @@ import CategoriForm from "../components/CategoriForm";
 import CategoriList from "../components/CategoriList";
 import MoviList from "../components/MoviList";
 import { useCategoria } from "../contexts/CategoriContext";
+import BotonCreate from "../components/BotonCreate";
 
 const Home = () => {
   const { movimiento } = useCategoria();
@@ -18,11 +19,16 @@ const Home = () => {
             Empieza a organizar tus finanzas de forma sencilla y mantén tus
             gastos bajo control.
           </p>
-          <button>Agregar</button>
+          <BotonCreate />
         </div>
       );
     } else {
-      return <MoviList />;
+      return (
+        <div>
+          <MoviList />
+          <BotonCreate />
+        </div>
+      );
     }
   };
 

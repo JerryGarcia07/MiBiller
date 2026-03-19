@@ -9,6 +9,7 @@ import CreateCategory from "./pages/CreateCategory";
 import PublicRoute from "./components/PublicRoute";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { MainLayout } from "./layouts/MainLayout";
+import CreateMove from "./pages/CreateMove";
 function App() {
   return (
     <>
@@ -34,6 +35,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Home />
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="/Movimiento/crearMovimiento"
+              element={
+                <ProtectedRoute>
+                  <CreateMove />
                 </ProtectedRoute>
               }
             ></Route>
