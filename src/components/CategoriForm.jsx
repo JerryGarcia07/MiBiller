@@ -10,7 +10,7 @@ const CategoriForm = (nameIcon) => {
   const { id } = useParams();
   const navegate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (id) {
       updateCategoria(id, { name: cateName, icon: cateIcon });

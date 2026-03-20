@@ -1,4 +1,20 @@
+import { useState } from "react";
+import { useCategoria } from "../contexts/CategoriContext";
+
 const CreateMove = () => {
+  const [name, setName] = useState("");
+  const [cantidad, setCantidad] = useState("");
+  const [fecha, setFecha] = useState("");
+  const [repetir, setRepetir] = useState("");
+  const [tipo, setTipo] = useState("");
+  const [descripcion, setDescripsion] = useState("");
+  const [categoria, setCategoria] = useState("");
+  const { addMovimiento, loading, Icon } = useCategoria();
+
+  const handleSumit = () => {
+    e.preventDefault();
+    addMovimiento();
+  };
   return (
     <div>
       <h1>CreateMove</h1>

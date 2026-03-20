@@ -181,6 +181,7 @@ export const CategoriProvider = ({ children }) => {
         deleteCategoria,
         updateCategoria,
         getMovimiento,
+        addMovimiento,
         loading,
         loadingMovi,
         Adding,
